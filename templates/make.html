@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% load static %}
+{% block make%}
+active
+{% endblock %}
+{% block modePG %}
+{% endblock %}
+{% block rightPG %}
+
+<div class="bdShadow width100 inline vcenter fadeIn" id="searchDiv">
+    <button class="bgGray" id="clientNameBtn" onclick="gotoModePage()">
+        <img class="modeIcon dpShadow" src="{% static 'assets/src/search.png' %}" alt="search">
+    </button>
+    <div>
+        <input class="" id="clientNameInput" type="text" name="" placeholder="請輸入病患編號 或 姓名">
+    </div>
+</div>
+{% endblock %}
+{%block js%}
+<script type="text/javascript">
+    var clientList = {{ Plist| safe}}
+</script>
+
+{%endblock%}

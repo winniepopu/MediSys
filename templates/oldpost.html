@@ -1,0 +1,143 @@
+{% extends 'base.html' %}{% load static %}
+{% block make%}
+active
+{% endblock %}
+{% block modePG %}
+{% block fadeInR%}
+fadeIn
+{% endblock %}
+<div class="bdShadow width100 inline vcenter downLine" id="infoRow">
+    <p>{{post.PatientID.Name}}</p>
+    <p>/</p>
+    <p id="patientID">{{post.PatientID.cardID}}</p>
+</div>
+<div class="bdShadow width100 inline btn-group" id="modeChoose">
+    <button class="modeBtn width50 inline vcenter hcenter bgGray height100 active" id="newBtn"
+        onclick="gotoNewPage('{{post.PatientID.cardID}}')">
+        <img class="modeIcon" id="" src="{% static 'assets/src/new.png' %}" alt="new">
+        <p>新增</p>
+    </button>
+    <button class="modeBtn width50 inline vcenter hcenter bgGray height100 {% block history%}{% endblock %}" id="hisBtn"
+        onclick="gotoRecord('{{post.PatientID.cardID}}')">
+        <img class="modeIcon" id="" src="{% static 'assets/src/history.png' %}" alt="history">
+        <p>歷史</p>
+    </button>
+</div>
+{% endblock %}
+{% block rightPG %}
+<div class="width100" id="modeWindow">
+    <div id="mode1">
+        <div class="moderow">
+            <div class="space_around inline width100 modeRowChild">
+                <div class="hcenter inline vcenter">
+                    <p>病名</p>
+                    <input class="newInput tcenter downLine" id="tags" type="text" name="" value="{{post.symptom}}"
+                        disabled>
+                    <button class="enterBtn inline vcenter hcenter blueShadow" id="sickBtn" onclick="findDrug()">自動
+                    </button>
+                </div>
+                <div class="hcenter inline">
+                    <p>開藥日</p>
+                    <input id="date" type="date">
+                </div>
+
+                <div class="hcenter inline">
+                    <p>天數</p>
+                    <input class="newInput tcenter downLine" id="day" type="text" name="" value="{{post.Days}}"
+                        disabled>
+                </div>
+
+            </div>
+
+            <div class="inline space_around width100">
+                <div class="newCol1 tcenter">
+                    <p>藥品名稱</p>
+                </div>
+                <div class="newCol2 tcenter">
+                    <p>時段</p>
+                </div>
+                <div class="newCol3 tcenter">
+                    <p>方式</p>
+                </div>
+                <div class="newCol4 tcenter">
+                    <p>數量</p>
+                </div>
+                <div class="newCol5 tcenter">
+                    <p>備註</p>
+                </div>
+                <div class="newCol6 tcenter vcenter">
+                    <img class="modeIcon addIcon dpShadow" id="addIcon" src="{% static '/assets/src/add.png' %}"
+                        alt="add">
+                </div>
+            </div>
+            <div class="space_around width100" id="addInput">
+                {% for medi in medi_list %}
+                <div class="inline width100 newInputRow">
+                    <div class="newCol1 tcenter">
+                        <input class="tcenter downLine drugs newInput2" id="" type="text" name=""
+                            value={{medi.medName}}>
+                    </div>
+                    <div class="newCol2 hcenter">
+                        <div class="col-lg-6">
+                            <input type="text" class="justAnInputBox" placeholder="" value={{medi.Time}} />
+                        </div>
+                    </div>
+                    <div class="newCol3 hcenter">
+                        <div class="col-lg-6">
+                            <input type="text" class="justAnotherInputBox" placeholder="" value={{medi.Way}} />
+                        </div>
+                    </div>
+                    <div class="newCol4 tcenter">
+                        <input class="tcenter downLine newInput2" id="" type="text" name="" value="{{medi.Quantity}}">
+                    </div>
+                    <div class=" newCol5 tcenter">
+                        <input class="downLine newInput2" id="" type="text" name="" value="{{medi.Description}}">
+                    </div>
+                    <div class="newCol6 tcenter vcenter">
+                        <img class="modeIcon delIcon dpShadow" id="" src="{% static 'assets/src/del.png' %}" alt="del"
+                            onClick="delete_row(this)">
+                    </div>
+                </div>
+
+                {% endfor %}
+                <div class="inline width100 newInputRow">
+                    <div class="newCol1 tcenter">
+                        <input class="tcenter downLine drugs newInput2" id="" type="text" name="">
+                    </div>
+                    <div class="newCol2 hcenter">
+                        <div class="col-lg-6">
+                            <input type="text" class="justAnInputBox" placeholder="" value={{medi.medName}} />
+                        </div>
+                    </div>
+                    <div class="newCol3 hcenter">
+                        <div class="col-lg-6">
+                            <input type="text" class="justAnotherInputBox" placeholder="" value={{medi.Way}}
+                                value={{medi.Time}} />
+                        </div>
+                    </div>
+                    <div class="newCol4 tcenter">
+                        <input class="tcenter downLine newInput2" id="" type="text" name="" value="{{medi.Quantity}}">
+                    </div>
+                    <div class="newCol5 tcenter">
+                        <input class="downLine newInput2" id="" type="text" name="" value="{{medi.Description}}">
+                    </div>
+                    <div class="newCol6 tcenter vcenter">
+                        <img class="modeIcon delIcon dpShadow" id="" src="{% static '/assets/src/del.png' %}" alt="del"
+                            onClick="delete_row(this)">
+                    </div>
+                </div>
+            </div>
+            <div class="inline space_around inline width100">
+                <button class="enterBtn width25 inline vcenter hcenter blueShadow" id="" onclick="addPost()">
+                    <p>確定</p>
+                </button>
+                <button class="enterBtn width25 inline vcenter hcenter blueShadow" id="" onclick="addPost()">
+                    <p>草稿</p>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,239 @@
+* {
+    font-family: Microsoft JhengHei;
+}
+
+input {
+    font-size: 20px;
+}
+
+#box_img {
+    width: 30px;
+    margin: 0 20px;
+}
+
+#logo_img {
+    width: 60px;
+}
+
+.title_name {
+    margin: 0 20px;
+    height: 80px;
+    font-size: 25px;
+}
+
+#title {
+    /* background-color: azure; */
+    height: 80px;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+#title {
+    position: fixed;
+}
+
+#container {
+    position: absolute;
+    top: 80px;
+    bottom: 0px;
+}
+
+#r_col,
+#l_col {
+    height: 100%;
+}
+
+#l_col {
+    /* background-color: bisque; */
+    width: 20%;
+}
+
+#r_col {
+    /* background-color: rgb(246, 255, 196); */
+    width: 80%;
+}
+
+.lRowIcon {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+}
+
+.lRow {
+    margin: 10px 0 0 0;
+    border-radius: 20px;
+}
+
+#searchDiv {
+    height: 41px;
+}
+
+#searchDiv {
+    position: relative;
+    width: 80%;
+    border: 0;
+    margin: 5px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+}
+
+#searchDiv div {
+    position: absolute;
+    right: 0px;
+    left: 60px;
+}
+
+#searchInput {
+    width: 98%;
+    height: 35px;
+    border: 0;
+    margin: 0;
+    background-color: rgb(240, 240, 240);
+}
+
+#modeChoose {
+    height: 80px;
+}
+
+.modeIcon {
+    width: 20px;
+    height: 20px;
+    margin: 0 30px 0 20px;
+}
+
+.newInput {
+    /* width: 150px; */
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 5px;
+}
+
+.newCol1 {
+    width: 30%;
+}
+
+.newCol2 {
+    width: 15%;
+}
+
+.newCol3 {
+    width: 15%;
+}
+
+.newCol4 {
+    width: 30%;
+}
+
+.newCol5 {
+    width: 10%;
+}
+
+.newInput2 div input {
+    width: 80%;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.newInput2 div {
+    margin: 10px 0;
+}
+
+/*提示框*/
+.ui-menu-item {
+    background: white;
+
+
+}
+
+#ui-id-1 {
+    /* max-width: 500px; */
+    width: 150px;
+    box-shadow: 1px 0px 5px rgb(226, 225, 225), -1px 0px 5px rgb(226, 225, 225), 0px 1px 5px rgb(226, 225, 225), 0px -1px 5px rgb(226, 225, 225);
+
+}
+
+.ui-menu-item:hover {
+    background: rgb(224, 224, 224);
+    cursor: pointer;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+    border: 1px solid rgb(224, 224, 224);
+    background: rgb(224, 224, 224);
+    font-weight: normal;
+    color: black;
+
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+/* tool */
+.bdShadow {
+    box-shadow: 0px 1px 0px rgb(226, 225, 225);
+}
+
+.dpShadow:hover {
+    cursor: pointer;
+    -webkit-filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.7))
+}
+
+.bxShadow:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.7);
+}
+
+.bgGray:hover {
+    cursor: pointer;
+    background-color: rgba(218, 218, 218, 0.575);
+}
+
+.width100 {
+    width: 100%;
+}
+
+.width50 {
+    width: 50%;
+}
+
+.vcenter {
+    display: flex;
+    align-items: center;
+}
+
+.hcenter {
+    justify-content: center;
+}
+
+.tcenter {
+    text-align: center;
+}
+
+.inline {
+    display: inline-flex;
+}
+
+.flex {
+    display: flex;
+}
+
+.space_between {
+    justify-content: space-between;
+}
+
+.space_around {
+    justify-content: space-around;
+}

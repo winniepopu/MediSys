@@ -1,0 +1,44 @@
+{% extends 'mode.html' %}{% load static %}
+{% block history %}
+active
+{% endblock %}
+{% block rightPG %}
+<div class="width100" id="modeWindow">
+    <table id="myDatatable" class="display">
+        <thead>
+            <tr>
+                <th></th>
+                <th>單號</th>
+                <th>病名</th>
+                <th>開單日</th>
+                <th>領藥日</th>
+                <th>功能</th>
+                <th>備註</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in post_list %}
+            <tr class="medi-inputDiv" id="med_1">
+                <td>
+                    <button class="mark" type="button"></button>
+                </td>
+                <td>{{post.PatientID.cardID}}</td>
+                <td>{{post.symptom}}</td>
+                <td>{{post.CreateDate| date:"Y-m-d"}}</td>
+                <td>{{post.Days}}</td>
+                <td>
+                    <button class="dtFunBtn editBtn" type="button" onclick="gotoPost('{{post.id}}')">
+                        <img class="editImg dtFunImg" id="" src="{% static '/assets/src/edit.png' %}" alt="edit">
+                    </button>
+                    <button class="dtFunBtn delBtn" type="button">
+                        <img class="delImg dtFunImg" id="" src="{% static '/assets/src/delete.png' %}" alt="del">
+                    </button>
+                </td>
+                <td></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

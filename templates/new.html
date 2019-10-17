@@ -1,0 +1,121 @@
+{% extends 'mode.html' %}{% load static %}
+{% block new%}
+active
+{% endblock %}
+{% block rightPG %}
+
+
+<div class="width100" id="modeWindow">
+    <div id="mode1">
+        <div class="moderow">
+            <div class="takeFreRow  width100 modeRowChild">
+                <div class="hcenter inline takeFre">
+                    <p>第
+                        <input class="newInput1 tcenter downLine" id="day" type="text" name="">
+                        /
+                        <input class="newInput1 tcenter downLine" id="day" type="text" name="">
+                        次領藥
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="space_around inline width100 modeRowChild">
+                <div class="hcenter inline vcenter">
+                    <p>病名</p>
+                    <input class="newInput tcenter downLine" id="tags" type="text" name="">
+                    <button class="enterBtn inline vcenter hcenter blueShadow" id="sickBtn" onclick="findDrug()">自動
+                    </button>
+                </div>
+                <div class="hcenter inline">
+                    <p>開藥日</p>
+                    <input id="date" type="date">
+                </div>
+                <div class="hcenter inline">
+                    <p>領藥日</p>
+                    <input id="date" type="date">
+                </div>
+                <div class="hcenter inline">
+                    <p>天數</p>
+                    <input class="newInput tcenter downLine" id="day" type="text" name="">
+                </div>
+
+
+
+            </div>
+
+            <div class=" inline space_around width100">
+                <div class="newCol1 tcenter">
+                    <p>藥品代號</p>
+                </div>
+                <div class="newCol1 tcenter">
+                    <p>藥品名稱</p>
+                </div>
+                <div class="newCol2 tcenter">
+                    <p>頻次</p>
+                </div>
+                <div class="newCol3 tcenter">
+                    <p>時間</p>
+                </div>
+                <div class="newCol3 tcenter">
+                    <p>部位</p>
+                </div>
+                <div class="newCol4 tcenter">
+                    <p>數量</p>
+                </div>
+                <div class="newCol5 tcenter">
+                    <p>備註</p>
+                </div>
+                <div class="newCol6 tcenter vcenter">
+                    <img class="modeIcon addIcon dpShadow" id="addIcon" src="{% static '/assets/src/add.png' %}"
+                        alt="add">
+                </div>
+            </div>
+            <div class="space_around width100" id="addInput">
+                {% for medi in medi_list %}
+                <div class="inline width100 newInputRow medi-inputDiv">
+                    <div class="newCol1 tcenter">
+                        <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name=""
+                            value={{medi.medName}}>
+                    </div>
+                    <div class="newCol2 hcenter">
+                        <div class="col-lg-6">
+                            <input type="text" class="justAnInputBox medi-input" placeholder="" value={{medi.Time}} />
+                        </div>
+                    </div>
+                    <div class="newCol3 hcenter">
+                        <div class="col-lg-6">
+                            <input type="text" class="justAnotherInputBox medi-input" placeholder=""
+                                value={{medi.Way}} />
+                        </div>
+                    </div>
+                    <div class="newCol4 tcenter">
+                        <input class="tcenter downLine newInput2 medi-input" id="" type="text" name=""
+                            value="{{medi.Quantity}}">
+                    </div>
+                    <div class=" newCol5 tcenter">
+                        <input class="downLine newInput2 medi-input" id="" type="text" name=""
+                            value="{{medi.Description}}">
+                    </div>
+                    <div class="newCol6 tcenter vcenter">
+                        <img class="modeIcon delIcon dpShadow" id="" src="{% static 'assets/src/del.png' %}" alt="del"
+                            onClick="delete_row(this)">
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            <div class="inline space_around inline width100">
+                <button class="enterBtn width25 inline vcenter hcenter blueShadow" id="" onclick="addPost()">
+                    <p>確定</p>
+                </button>
+                <button class="enterBtn width25 inline vcenter hcenter blueShadow" id="" onclick="addPost()">
+                    <p>草稿</p>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %}
+{% block make%}
+active
+{% endblock %}
+{% block modePG %}
+<div class="bdShadow width100 inline vcenter downLine" id="infoRow">
+    <p id="patientName">{{patient.Name}}</p>
+    <p>/</p>
+    <p id="patientID">{{cardID}}</p>
+</div>
+<div class="bdShadow width100 inline btn-group" id="modeChoose">
+    <button class="modeBtn width50 inline vcenter hcenter bgGray height100 {% block new%}{% endblock %}" id="newBtn"
+        onclick="gotoNewPage('{{cardID}}')">
+        <img class="modeIcon" id="" src="{% static 'assets/src/new.png' %}" alt="new">
+        <p>新增</p>
+    </button>
+    <button class="modeBtn width50 inline vcenter hcenter bgGray height100 {% block history%}{% endblock %}" id="hisBtn"
+        onclick="gotoRecord('{{cardID}}')">
+        <img class="modeIcon" id="" src="{% static 'assets/src/history.png' %}" alt="history">
+        <p>歷史</p>
+    </button>
+</div>
+{% endblock %}
+{% block rightPG %}
+{% endblock %}

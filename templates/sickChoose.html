@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block rightPG %}
+<div class="width100" id="modeWindow">
+    <div id="mode1">
+        <div class="moderow">
+            <div class="space_around inline width100 modeRowChild">
+                <div class="hcenter inline">
+                    <p>病名</p>
+                    <input class="newInput tcenter downLine" id="tags" type="text" name="">
+                </div>
+                <div class="hcenter inline">
+                    <p>開藥日</p>
+                    <input id="date" type="date">
+                </div>
+                <div class="hcenter inline">
+                    <p>天數</p>
+                    <input class="newInput tcenter downLine" id="" type="text" name="">
+                </div>
+                <div class="hcenter inline">
+                    <button class="enterBtn inline vcenter hcenter blueShadow" id="sickBtn"
+                        onclick="gotoNewPage('{{cardID}}')">
+                        <p>確定</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

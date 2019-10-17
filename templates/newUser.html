@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% load static %}
+{% block newUser %}
+active
+{% endblock %}
+{% block modePG %}
+{% endblock %}
+{% block rightPG %}
+<div class="width100 newUserSec nowrap" id="">
+    <div class="hcenter">
+        <div class="inline downLine newDiv vcenter">
+            <p class="newP">姓名</p>
+            <input class="newInput1 tcenter " id="newUserName" type="text" name="">
+        </div>
+    </div>
+    <div class="hcenter">
+        <div class="inline downLine newDiv vcenter">
+            <p class="newP">ID</p>
+            <input class="newInput1 tcenter " id="newUserID" type="text" name="">
+        </div>
+    </div>
+    <div class="hcenter">
+        <div class="inline downLine newDiv vcenter">
+            <p class="newP">生日</p>
+            <input class="newInput1 tcenter " id="" type="date" name="">
+        </div>
+    </div>
+    <div class="hcenter">
+        <div class="inline downLine newDiv vcenter">
+            <p class="newP">性別</p>
+            <form class="inline">
+                <input type="radio" name="gender" value="male" checked> 男<br>
+                <input type="radio" name="gender" value="female"> 女<br>
+                <input type="radio" name="gender" value="other"> 其他
+            </form>
+        </div>
+    </div>
+    <div class="hcenter">
+        <div class="inline downLine newDiv vcenter">
+            <p class="newP">電話</p>
+            <input class="newInput2 tcenter " id="" type="number" name="">
+        </div>
+    </div>
+    <div class="hcenter">
+        <div class="inline downLine newDiv vcenter">
+            <p class="newP">手機</p>
+            <input class="newInput2 tcenter " id="" type="number" name="">
+        </div>
+    </div>
+    <div class="hcenter">
+        <div class="inline downLine newDiv vcenter">
+            <p class="newP">地址</p>
+            <input class="newInput2 tcenter " id="" type="text" name="">
+        </div>
+    </div>
+    <div class="hcenter">
+        <div class="inline downLine newDiv vcenter">
+            <p class="newP">電子郵件</p>
+            <input class="newInput2 tcenter " id="" type="email" name="">
+        </div>
+    </div>
+    <div class="hcenter newUserDiv">
+        <button class="enterBtn width25 inline vcenter hcenter blueShadow" id="newBtn" onclick="addUser()">
+            <p>確定</p>
+        </button>
+    </div>
+</div>
+
+{% endblock %}
