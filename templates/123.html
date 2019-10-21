@@ -1,0 +1,62 @@
+  <!-- 'DrugCode','MedName','Frequency' ,'UseTiming' ,'Part' ,'Quantity','Discription' -->
+  <div class="inline width100 newInputRow medi-inputDiv">
+      <div class="newCol1 tcenter">
+          <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" value=${medi[0]}>
+      </div>
+      <div class="newCol1 tcenter">
+          <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" value=${medi[1]}>
+      </div>
+      <div class="newCol2 hcenter">
+          <div class="col-lg-6">
+              <input type="text" class="justAnInputBox medi-input" placeholder="" value=${medi[2]} />
+          </div>
+      </div>
+      <div class="newCol3 hcenter">
+          <div class="col-lg-6">
+              <input type="text" class="justAnotherInputBox medi-input" placeholder="" value=${medi[3]} />
+          </div>
+      </div>
+      <div class="newCol3 hcenter">
+          <div class="col-lg-6">
+              <input type="text" class="justAnotherInputBox medi-input" placeholder="" value=${medi[4]} />
+          </div>
+      </div>
+      <div class="newCol4 tcenter">
+          <input class="tcenter downLine newInput2 medi-input" id="" type="text" name="" value="${medi[5]}">
+      </div>
+      <div class=" newCol5 tcenter">
+          <input class="downLine newInput2 medi-input" id="" type="text" name="" value="${medi[6]}">
+      </div>
+      <div class="newCol6 tcenter vcenter">
+          <img class="modeIcon delIcon dpShadow" id="" src="{% static 'assets/src/del.png' %}" alt="del"
+              onClick="delete_row(this)">
+      </div>
+  </div>
+
+
+  <div class=" inline space_around width100">
+      <div class="newCol1 tcenter">
+          <p>藥品代號</p>
+      </div>
+      <div class="newCol1 tcenter">
+          <p>藥品名稱</p>
+      </div>
+      <div class="newCol2 tcenter">
+          <p>頻次</p>
+      </div>
+      <div class="newCol3 tcenter">
+          <p>時間</p>
+      </div>
+      <div class="newCol3 tcenter">
+          <p>部位</p>
+      </div>
+      <div class="newCol4 tcenter">
+          <p>數量</p>
+      </div>
+      <div class="newCol5 tcenter">
+          <p>備註</p>
+      </div>
+      <div class="newCol6 tcenter vcenter">
+          <img class="modeIcon addIcon dpShadow" id="addIcon" src="{% static '/assets/src/add.png' %}" alt="add">
+      </div>
+  </div>

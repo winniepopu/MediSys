@@ -39,9 +39,6 @@ active
                     <p>天數</p>
                     <input class="newInput tcenter downLine" id="day" type="text" name="">
                 </div>
-
-
-
             </div>
 
             <div class=" inline space_around width100">
@@ -74,6 +71,10 @@ active
             <div class="space_around width100" id="addInput">
                 {% for medi in medi_list %}
                 <div class="inline width100 newInputRow medi-inputDiv">
+                    <div class="newCol1 tcenter">
+                        <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name=""
+                            value={{medi.medName}}>
+                    </div>
                     <div class="newCol1 tcenter">
                         <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name=""
                             value={{medi.medName}}>

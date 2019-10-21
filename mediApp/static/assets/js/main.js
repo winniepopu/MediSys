@@ -47,10 +47,11 @@ $(function () {
 
 
 });
+
 function changeColor() {
-    $(".mark").click(function () {  //use a class, since your ID gets mangled
+    $(".mark").click(function () { //use a class, since your ID gets mangled
         if ($(this).hasClass("active") == false)
-            $(this).addClass("active");      //add the class to the clicked element
+            $(this).addClass("active"); //add the class to the clicked element
         else
             $(this).removeClass("active");
     });
@@ -79,6 +80,7 @@ function changeColor() {
         }
     }
 }
+
 function autoComplete() {
     var disease = [
         "糖尿病",
@@ -144,7 +146,7 @@ var SampleJSONData1 = [{
 }, {
     id: 3,
     title: '睡前'
-},];
+}, ];
 var SampleJSONData2 = [{
     id: 0,
     title: '飯前'
@@ -154,7 +156,7 @@ var SampleJSONData2 = [{
 }, {
     id: 2,
     title: '依情況'
-},];
+}, ];
 var comboTree1, comboTree2;
 
 $("body").delegate('.addIcon', "click", function (e) {
@@ -247,6 +249,7 @@ function addPost(id) {
     });
 
 }
+
 function addUser(id) {
 
     var patientID = $("#newUserID").val();
@@ -290,37 +293,42 @@ function findDrug() {
         success: function (result) {
             alert(result["message"])
             console.log(result["message"])
-
             if (result["status"] == "success") {
 
                 var html = ''
                 for (medi of result["message"]) {
-                    var element = `<div class="inline width100 newInputRow medi-inputDiv">
-        <div class="newCol1 tcenter ">
-            <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text"
-                name="" value=${medi[0]}>
-        </div>
-        <div class="newCol2 hcenter">
-            <div class="col-lg-6">
-                <input type="text" class="justAnInputBox medi-input" placeholder="" value=${medi[1]}/>
-            </div>
-        </div>
-        <div class="newCol3 hcenter">
-            <div class="col-lg-6">
-                <input type="text" class="justAnotherInputBox medi-input" placeholder="" value=${medi[2]}/>
-            </div>
-        </div>
-        <div class="newCol4 tcenter">
-            <input class="tcenter downLine newInput2 medi-input" id="" type="text" name="" value=${medi[3]}>
-        </div>
-        <div class="newCol5 tcenter">
-            <input class="downLine newInput2 medi-input" id="" type="text" name="">
-        </div>
-        <div class="newCol6 tcenter vcenter">
-            <img class="modeIcon delIcon dpShadow" id="" 
-                src="/static/assets/src/del.png" alt="del" onClick="delete_row(this)">
-        </div>
-    </div>`
+                    var element = `  <div class="inline width100 newInputRow medi-inputDiv">
+                            <div class="newCol1 tcenter">
+                                <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" value=${medi[0]}>
+                            </div>
+                            <div class="newCol1 tcenter">
+                                <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" value=${medi[1]}>
+                            </div>
+                            <div class="newCol2 hcenter">
+                                <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" value=${medi[2]}>
+                               
+                                    
+                                
+                            </div>
+                            <div class="newCol3 hcenter">
+                                <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" value=${medi[3]}>
+
+                            </div>
+                            <div class="newCol3 hcenter">
+                                <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" value=${medi[4]}>
+
+                            </div>
+                            <div class="newCol4 tcenter">
+                                <input class="tcenter downLine newInput2 medi-input" id="" type="text" name="" value="${medi[5]}">
+                            </div>
+                            <div class=" newCol5 tcenter">
+                                <input class="downLine newInput2 medi-input" id="" type="text" name="" value="${medi[6]}">
+                            </div>
+                            <div class="newCol6 tcenter vcenter">
+                                <img class="modeIcon delIcon dpShadow" id="" src="/static/assets/src/del.png" alt="del"
+                                    onClick="delete_row(this)">
+                            </div>
+                        </div>`
                     html += element
                 }
                 $("#addInput").html(html)
@@ -341,6 +349,58 @@ function findDrug() {
                 //     // window.location.reload();
                 // }
             }
+
+
+            //         if (result["status"] == "success") {
+
+            //             var html = ''
+            //             for (medi of result["message"]) {
+            //                 var element = `<div class="inline width100 newInputRow medi-inputDiv">
+            //     <div class="newCol1 tcenter ">
+            //         <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text"
+            //             name="" value=${medi[0]}>
+            //     </div>
+            //     <div class="newCol2 hcenter">
+            //         <div class="col-lg-6">
+            //             <input type="text" class="justAnInputBox medi-input" placeholder="" value=${medi[1]}/>
+            //         </div>
+            //     </div>
+            //     <div class="newCol3 hcenter">
+            //         <div class="col-lg-6">
+            //             <input type="text" class="justAnotherInputBox medi-input" placeholder="" value=${medi[2]}/>
+            //         </div>
+            //     </div>
+            //     <div class="newCol4 tcenter">
+            //         <input class="tcenter downLine newInput2 medi-input" id="" type="text" name="" value=${medi[3]}>
+            //     </div>
+            //     <div class="newCol5 tcenter">
+            //         <input class="downLine newInput2 medi-input" id="" type="text" name="">
+            //     </div>
+            //     <div class="newCol6 tcenter vcenter">
+            //         <img class="modeIcon delIcon dpShadow" id="" 
+            //             src="/static/assets/src/del.png" alt="del" onClick="delete_row(this)">
+            //     </div>
+            // </div>`
+            //                 html += element
+            //             }
+            //             $("#addInput").html(html)
+
+            //             comboTree1 = $('.justAnInputBox').comboTree({
+            //                 source: SampleJSONData1,
+            //                 isMultiple: true
+            //             });
+            //             comboTree2 = $('.justAnotherInputBox').comboTree({
+            //                 source: SampleJSONData2,
+            //                 isMultiple: false
+            //             });
+            //             // if (result['message'])
+            //             // // window.location.reload()
+            //             // // console.log(result)
+            //             // {
+            //             //     alert(result["message"])
+            //             //     // window.location.reload();
+            //             // }
+            //         }
 
         }
     });
@@ -420,6 +480,7 @@ function gotoSearch() {
     var nextpage_url = "/search/"
     window.location.replace(nextpage_url)
 }
+
 function gotoSickChoose(cardID) {
     var nextpage_url = "/sickChoose/" + cardID + "/"
     window.location.replace(nextpage_url)
@@ -429,19 +490,22 @@ function gotoNewPage(cardID) {
     var nextpage_url = "/new/" + cardID + "/"
     window.location.replace(nextpage_url)
 }
+
 function gotoModePage() {
     var clientName = $("#clientNameInput").val();
     var cardID = clientName.split(" / ");
     var nextpage_url = "/mode/" + cardID[0]
     window.location.replace(nextpage_url)
 }
+
 function makeDataTable() {
     $("#myDatatable").DataTable({
         searching: true, //關閉filter功能
         columnDefs: [{
             targets: [3],
             orderable: true,
-            "className": "dt-center", "targets": "_all",
+            "className": "dt-center",
+            "targets": "_all",
         }]
     });
 }

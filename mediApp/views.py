@@ -6,7 +6,7 @@ from django.shortcuts import HttpResponse
 from django.views.generic import View
 from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse
-from .models import Patient, Post, Medicine, DiseaseDrug
+from .models import Patient, Post, Medicine, Disease, Drug
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -107,7 +107,7 @@ def gotoMake(request):
     print(Plist)
 
     return render(request, 'make.html', {
-        "Plist":Plist
+        "Plist": Plist
     })
 
 
@@ -143,15 +143,27 @@ def findMed(request):
         print(request.POST)
         disease = request.POST.get("disease")
         print(disease)
-        drug_list = DiseaseDrug.objects.filter(Disease=disease)
-        if drug_list.exists():
-            results = drug_list.values_list(
-                'medName', 'Time', 'Way', 'Quantity')
 
-            # dd = list(drug_list)
-            # print(dd)
-            print(list(results))
-            print("YES")
+        # book = models.Book.objects.filter(name='紅樓夢').first()
+        # authors = book.author.all().values('name')
+
+        selected_disease = Disease.objects.filter(Disease=disease).first()
+        drug_list = selected_disease.Drugs.all()
+        if drug_list.exists():
+            results = drug_list.values_list('DrugCode','MedName','Frequency' ,'UseTiming' ,'Part' ,'Quantity','Discription' )
+
+
+
+            print("drug_list : ", results)
+
+    # if drug_list.exists():
+    #     results = drug_list.values_list(
+    #         'medName', 'Time', 'Way', 'Quantity')
+
+    #     # dd = list(drug_list)
+    #     # print(dd)
+    #     print(list(results))
+    #     print("YES")
             return JsonResponse({"status": "success", "message": list(results)})
 
     return JsonResponse({"message": "YES"})
