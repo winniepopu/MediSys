@@ -42,22 +42,34 @@ def addPost(request):
                 Postdata[meta] = request.POST.get(meta)
         print(Postdata)
         """
-        {'MedData': [['Aspirine', '早', '2', ''], ['sleepy med', '早', '1', '']], 'patientID': '1', 'sym': 'Sleep', 'days': '3'}
-        """
+       {'MedData': [['med001', 'AAAA', 'QID', 'PC', 'PO', '0', ''], ['med002', 'BBBB', 'QID', 'PC', 'PO', '0', '']], 'patientID': 'L123123112', 'sym': '高血壓', 'days': '1'} 
+       """
         # 新增post藥單
         select_patient = Patient.objects.get(cardID=Postdata['patientID'])
         new = Post(PatientID=select_patient,
-                   symptom=Postdata['sym'], Days=Postdata['days'])
+                   symptom=Postdata['sym'], Days=Postdata['days'], CreateDate=Postdata['CreateDate'], TakeMedDate=Postdata['TakeMedDate'], Times=Postdata['Times'], AvaTimes=Postdata['AvaTimes'],)
         new.save()
 
         # 新增藥品Record
         pk = Post.objects.all().latest('id')
         for medi in Postdata['MedData']:
             newMedi = Medicine(
-                PostID=pk, medName=medi[0], Time=medi[1], Way=medi[2], Quantity=medi[3], Description=medi[4])
+                PostID=pk,
+                DrugCode=medi[0], medName=medi[1], Frequency=medi[2], UseTiming=medi[3], Way=medi[4], Quantity=medi[5], Description=medi[6])
             newMedi.save()
 
     return JsonResponse({"message": "藥單新增成功"})
+
+
+"""    data = {
+        'patientID': patientID,
+        'sym': symptom,
+        'days': days,
+        'CreateDate': CreateDate,
+        'TakeMedDate': TakeDate,
+        'medData': med_Array
+
+    }"""
 
 
 def post(request, pk):
@@ -150,9 +162,8 @@ def findMed(request):
         selected_disease = Disease.objects.filter(Disease=disease).first()
         drug_list = selected_disease.Drugs.all()
         if drug_list.exists():
-            results = drug_list.values_list('DrugCode','MedName','Frequency' ,'UseTiming' ,'Part' ,'Quantity','Discription' )
-
-
+            results = drug_list.values_list(
+                'DrugCode', 'MedName', 'Frequency', 'UseTiming', 'Part', 'Quantity', 'Discription')
 
             print("drug_list : ", results)
 
@@ -185,8 +196,15 @@ def addUser(request):
         print(request.POST)
         cardID = request.POST.get('cardID')
         Name = request.POST.get('Name')
+        Birth = request.POST.get('Birth')
+        Sex = request.POST.get('Sex')
+        Tel = request.POST.get('Tel')
+        Cel = request.POST.get('Cel')
+        Address = request.POST.get('Address')
+        Mail = request.POST.get('Mail')
 
-        new = Patient(cardID=cardID, Name=Name)
+        new = Patient(cardID=cardID, Name=Name, Birth=Birth, Sex=Sex,
+                      Telephone=Tel, Celephone=Cel, Address=Address, Mail=Mail)
         new.save()
 
     return JsonResponse({"message": "病患新增成功"})

@@ -3,7 +3,13 @@ from django.db import models
 
 class Patient(models.Model):
     cardID = models.CharField(max_length=100)
-    Name = models.CharField(max_length=100)
+    Name = models.CharField(max_length=20)
+    Birth = models.CharField(max_length=15, blank=True, null=True)
+    Sex = models.CharField(max_length=5, blank=True, null=True)
+    Telephone = models.CharField(max_length=15, blank=True, null=True)
+    Celephone = models.CharField(max_length=15, blank=True, null=True)
+    Address = models.CharField(max_length=100, blank=True, null=True)
+    Mail = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Patient Profile'
@@ -21,12 +27,14 @@ class Post(models.Model):
         "Patient", on_delete=models.CASCADE, null=True)
     symptom = models.CharField(max_length=100)
     Days = models.IntegerField()
-    CreateDate = models.DateTimeField(auto_now_add=True)
-    TakeMedDate = models.DateTimeField(auto_now=True)
+    CreateDate = models.CharField(max_length=15)
+    TakeMedDate = models.CharField(max_length=15)
     AvaTimes = models.IntegerField()
     Times = models.IntegerField()
-    Division = models.CharField(max_length=30)
-    HosDate = models.DateTimeField()
+#!!!!!!!!! 還要改 null
+    Division = models.CharField(max_length=30, null=True)
+    HosDate = models.DateTimeField(null=True)
+################
     Status = models.CharField(max_length=100, default='submit')
 
     class Meta:
@@ -43,17 +51,17 @@ class Medicine(models.Model):
     medName = models.CharField(max_length=100)
     Frequency = models.CharField(max_length=30)
     UseTiming = models.CharField(max_length=30)
-    Part = models.CharField(max_length=30)
+    Way = models.CharField(max_length=30)
     Quantity = models.FloatField(default=0)
-    PerCost = models.FloatField(default=0)
-    TotalCost = models.FloatField(default=0)
-    SideE = models.CharField(max_length=150)
-    Discription = models.CharField(max_length=100)
+    PerCost = models.FloatField(default=0, null=True)
+    TotalCost = models.FloatField(default=0, null=True)
+    SideE = models.CharField(max_length=150, null=True)
+    Description = models.CharField(max_length=100)
 
-    timePD = models.IntegerField()
-    intervalD = models.IntegerField()
-    Alhour = models.IntegerField()
-    Alminute = models.IntegerField()
+    timePD = models.IntegerField(null=True)
+    intervalD = models.IntegerField(null=True)
+    Alhour = models.IntegerField(null=True)
+    Alminute = models.IntegerField(null=True)
 
     class Meta:
         db_table = "medicine"

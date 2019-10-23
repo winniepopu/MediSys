@@ -7,6 +7,7 @@ active
 {% block rightPG %}
 
 <div class="bdShadow width100 inline vcenter fadeIn" id="searchDiv">
+    <!-- <button class="bgGray" id="clientNameBtn" onclick="gotoModePage()"> -->
     <button class="bgGray" id="clientNameBtn" onclick="gotoModePage()">
         <img class="modeIcon dpShadow" src="{% static 'assets/src/search.png' %}" alt="search">
     </button>
@@ -17,7 +18,7 @@ active
 {% endblock %}
 {%block js%}
 <script type="text/javascript">
-    var clientList = {{ Plist| safe}}
+    var clientList = {{ Plist | safe}}
 </script>
 
 {%endblock%}

@@ -28,7 +28,7 @@ fadeIn
 <div class="width100" id="modeWindow">
     <div id="mode1">
         <div class="moderow">
-            <div class="space_around inline width100 modeRowChild">
+            <!-- <div class="space_around inline width100 modeRowChild">
                 <div class="hcenter inline vcenter">
                     <p>病名</p>
                     <input class="newInput tcenter downLine" id="tags" type="text" name="" value="{{post.symptom}}"
@@ -47,17 +47,45 @@ fadeIn
                         disabled>
                 </div>
 
-            </div>
+            </div> -->
 
-            <div class="inline space_around width100">
+            <div class="space_around inline width100 modeRowChild">
+                <div class="hcenter inline vcenter">
+                    <p>病名</p>
+                    <input class="newInput tcenter downLine" id="tags" type="text" name="" value={{post.symptom}}
+                        disabled>
+                    <button class="enterBtn inline vcenter hcenter blueShadow" id="sickBtn" onclick="findDrug()">自動
+                    </button>
+                </div>
+                <div class="hcenter inline">
+                    <p>開藥日</p>
+                    <input class="Inputdate" type="date" value="{{post.CreateDate}}" disabled>
+                </div>
+                <div class="hcenter inline">
+                    <p>領藥日</p>
+                    <input class="Inputdate" type="date" value="{{post.TakeMedDate}}" disabled>
+                </div>
+                <div class="hcenter inline">
+                    <p>天數</p>
+                    <input class="newInput tcenter downLine" id="day" type="text" name="" value="{{post.Days}}"
+                        disabled>
+                </div>
+            </div>
+            <div class=" inline space_around width100">
+                <div class="newCol1 tcenter">
+                    <p>藥品代號</p>
+                </div>
                 <div class="newCol1 tcenter">
                     <p>藥品名稱</p>
                 </div>
                 <div class="newCol2 tcenter">
-                    <p>時段</p>
+                    <p>頻次</p>
                 </div>
                 <div class="newCol3 tcenter">
-                    <p>方式</p>
+                    <p>時間</p>
+                </div>
+                <div class="newCol3 tcenter">
+                    <p>部位</p>
                 </div>
                 <div class="newCol4 tcenter">
                     <p>數量</p>
@@ -65,76 +93,59 @@ fadeIn
                 <div class="newCol5 tcenter">
                     <p>備註</p>
                 </div>
-                <div class="newCol6 tcenter vcenter">
+                <!-- <div class="newCol6 tcenter vcenter">
                     <img class="modeIcon addIcon dpShadow" id="addIcon" src="{% static '/assets/src/add.png' %}"
                         alt="add">
-                </div>
+                </div> -->
             </div>
             <div class="space_around width100" id="addInput">
                 {% for medi in medi_list %}
-                <div class="inline width100 newInputRow">
+                <div class="inline width100 newInputRow medi-inputDiv">
                     <div class="newCol1 tcenter">
-                        <input class="tcenter downLine drugs newInput2" id="" type="text" name=""
-                            value={{medi.medName}}>
+                        <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name=""
+                            value={{medi.DrugCode}} disabled>
+                    </div>
+                    <div class="newCol1 tcenter">
+                        <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name=""
+                            value={{medi.medName}} disabled>
                     </div>
                     <div class="newCol2 hcenter">
-                        <div class="col-lg-6">
-                            <input type="text" class="justAnInputBox" placeholder="" value={{medi.Time}} />
-                        </div>
+                        <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name=""
+                            value={{medi.Frequency}} disabled>
                     </div>
                     <div class="newCol3 hcenter">
-                        <div class="col-lg-6">
-                            <input type="text" class="justAnotherInputBox" placeholder="" value={{medi.Way}} />
-                        </div>
+                        <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name=""
+                            value={{medi.UseTiming}} disabled>
+                    </div>
+                    <div class="newCol3 hcenter">
+                        <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name=""
+                            value={{medi.Way}} disabled>
                     </div>
                     <div class="newCol4 tcenter">
-                        <input class="tcenter downLine newInput2" id="" type="text" name="" value="{{medi.Quantity}}">
+                        <input class="tcenter downLine newInput2 medi-input" id="" type="text" name=""
+                            value="{{medi.Quantity}}" disabled>
                     </div>
                     <div class=" newCol5 tcenter">
-                        <input class="downLine newInput2" id="" type="text" name="" value="{{medi.Description}}">
+                        <input class="downLine newInput2 medi-input" id="" type="text" name=""
+                            value="{{medi.Description}}" disabled>
                     </div>
-                    <div class="newCol6 tcenter vcenter">
-                        <img class="modeIcon delIcon dpShadow" id="" src="{% static 'assets/src/del.png' %}" alt="del"
+                    <!-- <div class="newCol6 tcenter vcenter">
+                        <img class="modeIcon delIcon dpShadow" id="" src="/static/assets/src/del.png" alt="del"
                             onClick="delete_row(this)">
-                    </div>
+                    </div> -->
                 </div>
 
                 {% endfor %}
-                <div class="inline width100 newInputRow">
-                    <div class="newCol1 tcenter">
-                        <input class="tcenter downLine drugs newInput2" id="" type="text" name="">
-                    </div>
-                    <div class="newCol2 hcenter">
-                        <div class="col-lg-6">
-                            <input type="text" class="justAnInputBox" placeholder="" value={{medi.medName}} />
-                        </div>
-                    </div>
-                    <div class="newCol3 hcenter">
-                        <div class="col-lg-6">
-                            <input type="text" class="justAnotherInputBox" placeholder="" value={{medi.Way}}
-                                value={{medi.Time}} />
-                        </div>
-                    </div>
-                    <div class="newCol4 tcenter">
-                        <input class="tcenter downLine newInput2" id="" type="text" name="" value="{{medi.Quantity}}">
-                    </div>
-                    <div class="newCol5 tcenter">
-                        <input class="downLine newInput2" id="" type="text" name="" value="{{medi.Description}}">
-                    </div>
-                    <div class="newCol6 tcenter vcenter">
-                        <img class="modeIcon delIcon dpShadow" id="" src="{% static '/assets/src/del.png' %}" alt="del"
-                            onClick="delete_row(this)">
-                    </div>
-                </div>
+
             </div>
-            <div class="inline space_around inline width100">
+            <!-- <div class="inline space_around inline width100">
                 <button class="enterBtn width25 inline vcenter hcenter blueShadow" id="" onclick="addPost()">
                     <p>確定</p>
                 </button>
                 <button class="enterBtn width25 inline vcenter hcenter blueShadow" id="" onclick="addPost()">
                     <p>草稿</p>
                 </button>
-            </div>
+            </div> -->
 
         </div>
     </div>

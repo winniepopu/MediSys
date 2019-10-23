@@ -32,8 +32,8 @@ active
                 <td>{{post.id}}</td>
                 <td>{{post.PatientID.Name}}</td>
                 <td>{{post.PatientID.cardID}}</td>
-                <td>{{post.CreateDate| date:"Y-m-d"}}</td>
-                <td>{{post.TakeMedDate| date:"Y-m-d"}}</td>
+                <td>{{post.CreateDate}}</td>
+                <td>{{post.TakeMedDate}}</td>
                 <td>
                     <button class="dtFunBtn editBtn" type="button" onclick="gotoPost('{{post.id}}')">
                         <img class="editImg dtFunImg" id="" src="{% static '/assets/src/edit.png' %}" alt="edit">

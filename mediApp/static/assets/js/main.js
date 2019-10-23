@@ -162,29 +162,35 @@ var comboTree1, comboTree2;
 $("body").delegate('.addIcon', "click", function (e) {
     $("#addInput").append(
         `<div class="inline width100 newInputRow medi-inputDiv">
-        <div class="newCol1 tcenter ">
-            <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text"
-                name="">
+        <div class="newCol1 tcenter">
+            <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" >
+        </div>
+        <div class="newCol1 tcenter">
+            <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" >
         </div>
         <div class="newCol2 hcenter">
-            <div class="col-lg-6">
-                <input type="text" class="justAnInputBox medi-input" placeholder="" />
-            </div>
+            <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" >
+           
+                
+            
         </div>
         <div class="newCol3 hcenter">
-            <div class="col-lg-6">
-                <input type="text" class="justAnotherInputBox medi-input" placeholder="" />
-            </div>
+            <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="" >
+
+        </div>
+        <div class="newCol3 hcenter">
+            <input class="tcenter downLine drugs newInput2 medi-input" id="" type="text" name="">
+
         </div>
         <div class="newCol4 tcenter">
-            <input class="tcenter downLine newInput2 medi-input" id="" type="text" name="">
+            <input class="tcenter downLine newInput2 medi-input" id="" type="text" name="" >
         </div>
-        <div class="newCol5 tcenter">
-            <input class="downLine newInput2 medi-input" id="" type="text" name="">
+        <div class=" newCol5 tcenter">
+            <input class="downLine newInput2 medi-input" id="" type="text" name="" >
         </div>
         <div class="newCol6 tcenter vcenter">
-            <img class="modeIcon delIcon dpShadow" id="" 
-                src="/static/assets/src/del.png" alt="del" onClick="delete_row(this)">
+            <img class="modeIcon delIcon dpShadow" id="" src="/static/assets/src/del.png" alt="del"
+                onClick="delete_row(this)">
         </div>
     </div>`);
     // $("#hide:not(.on-hide)").click(function() {
@@ -212,6 +218,10 @@ function addPost(id) {
     var patientID = $("#patientID").text();
     var symptom = $("#tags").val();
     var days = $("#day").val();
+    var CreateDate = $("#date").val();
+    var TakeDate = $("#date2").val();
+    var times = $("#times").val();
+    var avaTimes = $("#avaTimes").val();
     // var formData = new FormData($('#form1')[0]);
 
     var med_Array = []
@@ -228,6 +238,10 @@ function addPost(id) {
         'patientID': patientID,
         'sym': symptom,
         'days': days,
+        'CreateDate': CreateDate,
+        'TakeMedDate': TakeDate,
+        'Times': times,
+        'AvaTimes': avaTimes,
         'medData': med_Array
     }
 
@@ -254,12 +268,25 @@ function addUser(id) {
 
     var patientID = $("#newUserID").val();
     var newUserName = $("#newUserName").val();
+    var newUserBirth = $("#newUserBirth").val();
+    var newUserSex = $('input:radio:checked[name="gender"]').val()
+    var newUserTel = $("#newUserTel").val();
+    var newUserCel = $("#newUserCel").val();
+    var newUserAddr = $("#newUserAddr").val();
+    var newUserMail = $("#newUserMail").val();
+
 
     // var formData = new FormData($('#form1')[0]);
 
     data = {
         'cardID': patientID,
         'Name': newUserName,
+        'Birth': newUserBirth,
+        'Sex': newUserSex,
+        'Tel': newUserTel,
+        'Cel': newUserCel,
+        'Address': newUserAddr,
+        'Mail': newUserMail
     }
 
     console.log(data)
@@ -331,7 +358,7 @@ function findDrug() {
                         </div>`
                     html += element
                 }
-                $("#addInput").html(html)
+                $("#addInput").append(html)
 
                 comboTree1 = $('.justAnInputBox').comboTree({
                     source: SampleJSONData1,
@@ -494,8 +521,10 @@ function gotoNewPage(cardID) {
 function gotoModePage() {
     var clientName = $("#clientNameInput").val();
     var cardID = clientName.split(" / ");
-    var nextpage_url = "/mode/" + cardID[0]
-    window.location.replace(nextpage_url)
+
+    gotoNewPage(cardID[0])
+    // var nextpage_url = "/mode/" + cardID[0]
+    // window.location.replace(nextpage_url)
 }
 
 function makeDataTable() {
@@ -548,6 +577,17 @@ $('#clientNameInput').keypress(function (e) {
 if (document.getElementById('date') != null) {
     document.getElementById('date').valueAsDate = new Date();
 }
+
+if (document.getElementById('date2') != null) {
+    var dateTime = new Date();
+    dateTime = dateTime.setDate(dateTime.getDate() + 28);
+    dateTime = new Date(dateTime);
+    document.getElementById('date2').valueAsDate = dateTime;
+
+}
+
+
+
 $('#tags').keypress(function (e) {
     var key = window.event ? e.keyCode : e.which;
     if (key == 13)
