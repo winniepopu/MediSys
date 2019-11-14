@@ -486,8 +486,18 @@ a.ui-button:active,
 .asi_title p{
     margin: 16px 10px 0 0;
 }
-.asi_content{
-    margin: 58px 10px 0 0;
+#aside{
+    position: relative;
+}
+.asi_content {
+    position : fixed;
+    float: left;
+    margin: 0 0 0 10px;
+    color: rgb(160, 160, 160);
+}
+.index:hover {
+    color: rgb(0, 0, 0);
+    cursor: pointer;
 }
 .sec_content{
     margin: 10px 10px 0 0;

@@ -527,7 +527,13 @@ function gotoModePage() {
     // var nextpage_url = "/mode/" + cardID[0]
     // window.location.replace(nextpage_url)
 }
-
+function gotoIndex(index, target) {
+    $(index).click(function () {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(target).offset().top
+        }, 2000);
+    });
+}
 function makeDataTable() {
     $("#myDatatable").DataTable({
         searching: true, //關閉filter功能
@@ -572,7 +578,10 @@ $(document).ready(function () {
     changeColor();
     var table = $('#myDatatable').DataTable();
     document.getElementById("num_remind").innerHTML = table.rows().count();
-
+    gotoIndex("#process_index", "#process");
+    gotoIndex("#remind_index", "#need_remind");
+    gotoIndex("#recent_index", "#recent_taking");
+    gotoIndex("#prepare_index", "#prepare_drug");
 });
 
 $('#clientNameInput').keypress(function (e) {
