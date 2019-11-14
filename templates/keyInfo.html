@@ -5,68 +5,92 @@ active
 {% block modePG %}
 {% endblock %}
 {% block rightPG %}
-<div class="width100" id="modeWindow">
+<div class="width100 inline" id="modeWindow">
+    <div class="width80" id="section">
+        <div class="section" id="process">
+            <div class="title sec_title">
+                <P>待處理</P>
+            </div>
+            <div class="sec_content gray_border">
 
-    <div class="section" id="need_remind">
-        <div class="title sec_title inline">
-            <P>需要提醒</P>
-            <p id="num_remind"></p>
+            </div>
         </div>
-        <div class="sec_content">
-            <table id="myDatatable" class="display">
-                <thead>
-                    <!-- 必填 -->
+        <div class="section" id="need_remind">
+            <div class="title sec_title inline">
+                <P>需要提醒</P>
+                <p id="num_remind"></p>
+            </div>
+            <div class="sec_content gray_border">
+                <table id="myDatatable" class="display Datatable">
+                    <thead>
+                        <!-- 必填 -->
 
-                    <tr>
-                        <th>狀態</th>
-                        <th>單號</th>
-                        <th>姓名</th>
-                        <th>ID</th>
-                        <th>領藥日</th>
-                        <th>功能</th>
-                        <th>備註</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for post in post_list %}
-                    <!-- <tr class="medi-inputDiv" id="med_1" onclick="gotoPost('{{post.id}}')"> -->
-                    <tr>
-                        <td>
-                            <button class="mark keep_mark" type="button">留</button>
-                            <button class="mark book_mark" type="button">預</button>
-                            <button class="mark take_mark" type="button">領</button>
-                            <button class="mark delay_mark" type="button">逾</button>
-                            <button class="mark recent_mark" type="button">近</button>
-                        </td>
-                        <td>{{post.id}}</td>
-                        <td>{{post.PatientID.Name}}</td>
-                        <td>{{post.PatientID.cardID}}</td>
-                        <td>{{post.TakeMedDate}}</td>
-                        <td>
-                            <button class="dtFunBtn editBtn" type="button" onclick="gotoPost('{{post.id}}')">
-                                <img class="editImg dtFunImg" id="" src="{% static '/assets/src/edit.png' %}"
-                                    alt="edit">
-                            </button>
-                            <button class="dtFunBtn delBtn" type="button">
-                                <img class="delImg dtFunImg " id="" src="{% static '/assets/src/delete.png' %}"
-                                    alt="del">
-                            </button>
-                        </td>
-                        <td>
+                        <tr>
+                            <th>狀態</th>
+                            <th>單號</th>
+                            <th>姓名</th>
+                            <th>ID</th>
+                            <th>領藥日</th>
+                            <th>功能</th>
+                            <th>備註</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in post_list %}
+                        <!-- <tr class="medi-inputDiv" id="med_1" onclick="gotoPost('{{post.id}}')"> -->
+                        <tr>
+                            <td>
+                                <button class="mark take_mark" type="button">領</button>
+                                <button class="mark keep_mark" type="button">留</button>
+                                <button class="mark book_mark" type="button">預</button>
+                                <button class="mark delay_mark" type="button">逾</button>
+                                <button class="mark prepare_mark" type="button">包</button>
+                            </td>
+                            <td>{{post.id}}</td>
+                            <td>{{post.PatientID.Name}}</td>
+                            <td>{{post.PatientID.cardID}}</td>
+                            <td>{{post.TakeMedDate}}</td>
+                            <td>
+                                <button class="dtFunBtn editBtn" type="button" onclick="gotoPost('{{post.id}}')">
+                                    <img class="editImg dtFunImg" id="" src="{% static '/assets/src/remind.png' %}"
+                                        alt="edit">
+                                </button>
+                                <button class="dtFunBtn delBtn" type="button">
+                                    <img class="delImg dtFunImg " id="" src="{% static '/assets/src/delete.png' %}"
+                                        alt="del">
+                                </button>
+                            </td>
+                            <td>
 
-                        </td>
-                    </tr>
-                    {%endfor%}
-                </tbody>
-            </table>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="section" id="recent_taking">
+            <div class="title sec_title">
+                <P>近期領藥</P>
+            </div>
+            <div class="sec_content gray_border">
+
+            </div>
+        </div>
+        <div class="section" id="recent_taking">
+            <div class="title sec_title">
+                <P>待包藥</P>
+            </div>
+            <div class="sec_content gray_border">
+
+            </div>
         </div>
     </div>
-    <div class="section" id="recent_taking">
-        <div class="title sec_title">
-            <P>近期領藥</P>
-        </div>
-        <div class="sec_content">
-
+    <div class="width20" id="aside">
+        <div class="asi_content gray_border">
+            <div class="title asi_title">
+                <P></P>
+            </div>
         </div>
     </div>
 </div>
