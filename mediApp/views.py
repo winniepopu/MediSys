@@ -208,3 +208,11 @@ def addUser(request):
         new.save()
 
     return JsonResponse({"message": "病患新增成功"})
+
+
+def keyInfo(request):
+    
+    post_list = Post.objects.all()
+    return render(request, 'keyInfo.html', {
+        "post_list": post_list,
+    })

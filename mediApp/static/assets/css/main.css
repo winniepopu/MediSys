@@ -4,7 +4,7 @@
 }
 
 input {
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 #box_img {
@@ -16,16 +16,17 @@ input {
     width: 60px;
     margin-left: 15px;
 }
-
-.title_name {
+#pharmacy_name{
     margin: 0 20px;
     height: 80px;
-    font-size: 25px;
+}
+.title {
+    font-size: 1.5rem;
 }
 
-#title {
+#header {
     background-color: white;
-    height: 80px;
+    height: 70px;
     z-index: 3;
     position: fixed;
 }
@@ -43,7 +44,7 @@ html {
 }
 
 .l_colBtn p {
-    margin-left: 10px;
+    margin: 7px;
 }
 
 #r_col,
@@ -51,11 +52,13 @@ html {
 
 #l_col {
     /* background-color: bisque; */
-    width: 20%;
-    margin-right: 10px;
+    width: 15%;
+    margin-right: 5%;
     padding: 0 5px;
 }
-
+a{
+    text-decoration:none;
+}
 #r_col {
     /* background-color: rgb(246, 255, 196); */
     width: 80%;
@@ -73,6 +76,8 @@ html {
     border-radius: 20px;
     background-color: white;
     border: 0;
+    font-size: 1rem;
+    
 }
 
 .modeBtn {
@@ -186,8 +191,9 @@ html {
 }
 
 #l_col .active {
-    background-color: rgba(50, 105, 255, 0.637);
+    background-color: rgba(50, 105, 255, 0.425);
     color: white;
+    text-shadow: 0.5px 0.5px black;
 }
 
 #modeChoose .active {
@@ -216,14 +222,17 @@ html {
 .mark {
     width: 20px;
     height: 20px;
+    padding: 0px;
+    color: rgb(160, 160, 160);
     /* background-color: white; */
     border: 0;
+    border-radius: 4px;
     /* border-radius: 5px; */
     /* border: 1px solid rgb(224, 224, 224); */
 }
 
 #myDatatable .active {
-    background-color: rgb(255, 242, 60);
+    background-color: rgb(255, 241, 51);
 }
 
 .mark:hover {
@@ -309,8 +318,8 @@ html {
     opacity: 0;
 }
 
-#date {
-    border: 1px solid #c4c4c4;
+.date {
+    border: none;
     border-radius: 5px;
     background-color: #fff;
     padding: 3px 5px;
@@ -457,14 +466,7 @@ a.ui-button:active,
     margin: 5px;
 }
 
-#date2 {
-    border: 1px solid #c4c4c4;
-    border-radius: 5px;
-    background-color: #fff;
-    padding: 3px 5px;
-    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
-    width: 190px;
-}
+
 
 .Inputdate {
     border: 1px solid #c4c4c4;
@@ -473,4 +475,17 @@ a.ui-button:active,
     padding: 3px 5px;
     box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
     width: 190px;
+}
+/* keyInfo */
+.sec_title p{
+    margin: 16px 10px 0 0;
+}
+.sec_content{
+    margin: 10px 10px 10px 0;
+    border-radius: 5px;
+    border: 1px solid #c4c4c4;
+    padding: 10px;
+}
+#num_remind{
+    color: rgb(223, 0, 0);
 }

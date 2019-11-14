@@ -123,6 +123,7 @@ function autoComplete() {
     $("#tags").autocomplete({
         source: disease
     });
+
     $(".drugs").autocomplete({
         source: drug
     });
@@ -146,7 +147,7 @@ var SampleJSONData1 = [{
 }, {
     id: 3,
     title: '睡前'
-}, ];
+},];
 var SampleJSONData2 = [{
     id: 0,
     title: '飯前'
@@ -156,7 +157,7 @@ var SampleJSONData2 = [{
 }, {
     id: 2,
     title: '依情況'
-}, ];
+},];
 var comboTree1, comboTree2;
 
 $("body").delegate('.addIcon', "click", function (e) {
@@ -537,6 +538,7 @@ function makeDataTable() {
             "targets": "_all",
         }]
     });
+
 }
 $("#searchDiv input").keypress(function (e) {
     code = (e.keyCode ? e.keyCode : e.which);
@@ -564,9 +566,13 @@ $(document).ready(function () {
         source: SampleJSONData2,
         isMultiple: false
     });
+
     autoComplete();
     makeDataTable();
     changeColor();
+    var table = $('#myDatatable').DataTable();
+    document.getElementById("num_remind").innerHTML = table.rows().count();
+
 });
 
 $('#clientNameInput').keypress(function (e) {
