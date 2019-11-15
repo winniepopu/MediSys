@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from mediApp.views import post, gotoNew, addPost, gotoRecord, gotoAllpost, findMed, gotoIndex, gotoNewUser, gotoMake, gotoMode, gotoSickChoose, addUser, keyInfo
+from mediApp.views import post, gotoNew, addPost, gotoRecord, gotoAllpost, findMed, gotoIndex, gotoNewUser, gotoMake, gotoMode, gotoSickChoose, addUser, keyInfo,login,signout
 
 
 urlpatterns = [
@@ -35,6 +35,8 @@ urlpatterns = [
     url(r'^sickChoose/(?P<cardID>.*)/$', gotoSickChoose, name = "gotoSickChoose"),
     url(r'addUser/$', addUser, name="addUser"),
     url(r'keyInfo/$', keyInfo, name="keyInfo"),
+    url(r'login/$', login, name="login"),
+    url(r'^logout/', signout, name="signout"),
     # url(r'^download/(?P<pk>\d+)/$', file_download, name="download"),
 
     # url(r'^post/add', add, name="add"),

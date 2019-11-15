@@ -6,8 +6,95 @@ from django.shortcuts import HttpResponse
 from django.views.generic import View
 from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 from .models import Patient, Post, Medicine, Disease, Drug
 from django.views.decorators.csrf import csrf_exempt
+
+from django.contrib import auth
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from .form import LoginForm
+import datetime
+import time
+import requests
+
+@csrf_exempt
+def login(request):
+    if request.method == 'GET':
+        form = LoginForm()
+        next = request.GET.get('next', '')
+        return render(request, 'login.html', {
+            'next': next,
+            'today': str(datetime.datetime.now().date()),
+            'current_time': str(datetime.datetime.now()),
+            # 'loading_time': requests.get("http://127.0.0.1").elapsed.total_seconds(),
+            'form': form,
+        })
+    if request.method == 'POST':
+        user = request.POST.get('user')
+        next = request.POST.get('next', '')
+
+        form = LoginForm(request.POST)
+        print("valid: ",form.is_valid())
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            print("user_name:",username)
+            user = auth.authenticate(username=username, password=password)
+            # print("id:",user.id)
+            
+
+            if user is not None and user.is_active:
+                auth.login(request, user)
+
+                if next:
+                # 如果next存在，直接跳轉到指定頁面
+                    return HttpResponseRedirect(next)
+                else:
+                    return HttpResponseRedirect(reverse('index'))
+                
+                    # return HttpResponseRedirect(reverse('catalog', args=['files']))
+                
+            # if request.method == 'GET':
+            #         return render(request, template, {'nextURL':request.GET.get('next')})
+
+
+
+
+            else:
+                # 登陸失敗
+                print("NO")
+                return render(request, 'login.html', {
+                    'today': str(datetime.datetime.now().date()),
+                    'current_time': str(datetime.datetime.now()),
+                    # 'loading_time': requests.get("http://127.0.0.1").elapsed.total_seconds(),
+                    'form': form,
+                    'error': 'true',
+                    'message': 'Wrong password. Please try again.'})
+        else:
+            return render(request, 'login.html', {
+            'today': str(datetime.datetime.now().date()),
+            'current_time': str(datetime.datetime.now()),
+            # 'loading_time': requests.get("http://127.0.0.1").elapsed.total_seconds(),
+            'form': form,
+            'error': 'true',
+            'message': 'Wrong password. Please try again.'})
+    else:
+        form = LoginForm()
+
+    return render(request, 'login.html', {
+        'today': str(datetime.datetime.now().date()),
+        'current_time': str(datetime.datetime.now()),
+        # 'loading_time': requests.get("http://127.0.0.1").elapsed.total_seconds(),
+        'form': form,
+        'message': '123',
+    })
+
+#登出
+def signout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('login'))
 
 
 def gotoNew(request, cardID):
@@ -47,7 +134,7 @@ def addPost(request):
         # 新增post藥單
         select_patient = Patient.objects.get(cardID=Postdata['patientID'])
         new = Post(PatientID=select_patient,
-                   symptom=Postdata['sym'], Days=Postdata['days'], CreateDate=Postdata['CreateDate'], TakeMedDate=Postdata['TakeMedDate'], Times=Postdata['Times'], AvaTimes=Postdata['AvaTimes'],)
+                   symptom=Postdata['sym'], Days=Postdata['days'], CreateDate=Postdata['CreateDate'], TakeMedDate=Postdata['TakeMedDate'], Times=Postdata['Times'], AvaTimes=Postdata['AvaTimes'],PharmacyID=request.user.id)
         new.save()
 
         # 新增藥品Record
@@ -84,7 +171,8 @@ def post(request, pk):
 
 
 def gotoAllpost(request):
-    post_list = Post.objects.all()
+    # post_list = Post.objects.all()
+    post_list = Post.objects.filter(PharmacyID = request.user.id)
 
     return render(request, 'search.html', {
         "post_list": post_list,
@@ -93,7 +181,7 @@ def gotoAllpost(request):
 
 
 def gotoRecord(request, cardID):
-    selected_patient = Patient.objects.get(cardID=cardID)
+    selected_patient = Patient.objects.get(cardID=cardID,PharmacyID = request.user.id)
     post_list = Post.objects.select_related(
         'PatientID').filter(PatientID=selected_patient)
 
@@ -110,8 +198,11 @@ def gotoNewUser(request):
 
 
 def gotoMake(request):
-    patient_list = Patient.objects.all().values_list(
+    patient_list = Patient.objects.filter(PharmacyID = request.user.id).values_list(
         'cardID', 'Name')
+    
+    # patient_list = Patient.objects.all().values_list(
+    #     'cardID', 'Name')
     print(patient_list)
     Plist = []
     for i in patient_list:
@@ -124,7 +215,7 @@ def gotoMake(request):
 
 
 def gotoMode(request, cardID):
-    Patient_list = Patient.objects.all()
+    Patient_list = Patient.objects.filter(PharmacyID = request.user.id)
     if Patient.objects.filter(cardID=cardID).exists():
         selected_Patient = Patient.objects.get(cardID=cardID)
 
@@ -138,7 +229,7 @@ def gotoMode(request, cardID):
 
 
 def gotoSickChoose(request, cardID):
-    selected_patient = Patient.objects.get(cardID=cardID)
+    selected_patient = Patient.objects.get(cardID=cardID,PharmacyID = request.user.id)
     post_list = Post.objects.select_related(
         'PatientID').filter(PatientID=selected_patient)
 
@@ -204,7 +295,7 @@ def addUser(request):
         Mail = request.POST.get('Mail')
 
         new = Patient(cardID=cardID, Name=Name, Birth=Birth, Sex=Sex,
-                      Telephone=Tel, Celephone=Cel, Address=Address, Mail=Mail)
+                      Telephone=Tel, Celephone=Cel, Address=Address, Mail=Mail,PharmacyID = request.user.id)
         new.save()
 
     return JsonResponse({"message": "病患新增成功"})
@@ -212,7 +303,7 @@ def addUser(request):
 
 def keyInfo(request):
     
-    post_list = Post.objects.all()
+    post_list = Post.objects.filter(PharmacyID = request.user.id)
     return render(request, 'keyInfo.html', {
         "post_list": post_list,
     })
