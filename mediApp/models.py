@@ -10,6 +10,7 @@ class Patient(models.Model):
     Celephone = models.CharField(max_length=15, blank=True, null=True)
     Address = models.CharField(max_length=100, blank=True, null=True)
     Mail = models.CharField(max_length=50, blank=True, null=True)
+    PharmacyID = models.CharField(max_length=100, default='2')
 
     class Meta:
         verbose_name = 'Patient Profile'
@@ -36,6 +37,8 @@ class Post(models.Model):
     HosDate = models.DateTimeField(null=True)
 ################
     Status = models.CharField(max_length=100, default='submit')
+    PharmacyID = models.CharField(max_length=100, default='2')
+
 
     class Meta:
         db_table = "post"

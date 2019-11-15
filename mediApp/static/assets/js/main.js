@@ -621,3 +621,6 @@ $('#tags').keypress(function (e) {
     if (key == 13)
         $('#sickBtn').click();
 });
+
+// 按下右上角多登出按鈕
+

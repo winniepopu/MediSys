@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{%static 'assets/css/easy-autocomplete.min.css' %}">
     <link rel="stylesheet" href="{%static 'assets/css/easy-autocomplete.themes.min.css' %}">
     <link rel="stylesheet" href="{%static 'assets/css/jquery.dataTables.min.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
 
 
@@ -31,10 +33,37 @@
                 <p>享藥健康藥局</p>
             </div>
         </div>
-        <div>
-            <a href="/index">
-                <img class="dpShadow" id="box_img" src="{%static 'assets/src/toolBox.png' %}" alt="toolBox">
+        <!-- <li class="login sign nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <p style="display: inline">Hello,{{User.EmpName}} ({{User.EmpworkGrp}} , TMC-MFG)</p>
             </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="logout">Sign out</a>
+            </div>
+        </li> -->
+        <div>
+        <div class="dropdown">
+                <!-- <img class="dpShadow" id="box_img" src="{%static 'assets/src/toolBox.png' %}" alt="toolBox"> -->
+                <button class="btn  " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="dpShadow" id="box_img" src="{%static 'assets/src/toolBox.png' %}" alt="toolBox">
+
+                </button >
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/logout">Sign out</a>
+                </div>
+        </div>
+
+
+                <!-- <a href="/index">
+                    <img class="dpShadow" class="dropdown-menu" aria-labelledby="navbarDropdown" id="box_img" src="{%static 'assets/src/toolBox.png' %}" alt="toolBox">
+                </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="logout">Sign out</a>
+                
+                
+            </div> -->
+
         </div>
     </div>
 
@@ -90,6 +119,8 @@
     <script src="{%static 'assets/js/icontains.js' %}"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="{%static 'assets/js/main.js' %}"></script>
     <script src="{%static 'assets/js/jquery.dataTables.min.js' %}"></script>
     <script src="{%static 'assets/js/icontains.js' %}" type="text/javascript"></script>

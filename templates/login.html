@@ -1,0 +1,123 @@
+<html lang="en">
+{% load staticfiles %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AMT File Station</title>
+    <link rel="stylesheet" href="{%static '/assets/css/bootstrap.min.css' %}">
+
+    <!-- <link href="http://152.135.51.8/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static '/assets/css/login.css' %}">
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container flex-between">
+            <div class="logo">
+                <p>享藥健康</p>
+                <!-- <a href="/">
+                    <img src="assets/media/logo.png" alt="logo" class="logo">
+                </a> -->
+            </div>
+            <ul class="flex-between" id="topMenu">
+                <li><a href="#login">Login</a></li>
+                <li class="date">{{today}}</li>
+            </ul>
+            <button class="ham" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+
+
+
+
+    <div id="main-content" class="container">
+        <div class="row">
+            <div class="card">
+
+                <!-- <form action="" method="post" id="form1" class="up-select-btn">
+                    {% csrf_token %}
+                    <input id="fname" name="name" type="text" required="required" class="form-control new-folder" placeholder="ex: projectname">
+                    <input id="fauthor" name="password" type="text" required="required" class="form-control new-folder" value="Winnie">
+
+                    <input type="submit" value="Upload" id="upload_submit-btn">
+
+                </form> -->
+                <form action="/login/" method="post" id="form1">
+                    {% csrf_token %}
+                    <fieldset>
+                        <legend><img src="{%static 'assets/src/user.svg' %} " style=" width: 1.5rem; display: inline-block; margin: 0 1rem; ">Login</legend>
+                        <div class="group row ">
+
+                            <label for="name " class="col-3 " style=" text-align: right; padding: 0 1rem; ">Pharmacy No.</label> {{form.username}}
+                            <!-- <input id="name" name="name " type="text " tabindex="1 " required="required " class="col-9 " placeholder="Enter your Employee No. (case-insensitive). "> -->
+
+                        </div>
+                        <div class="group row ">
+
+                            <label for="password " class="col-3 " style=" text-align: right; padding: 0 1rem; ">Password</label> {{form.password}}
+                            <!-- <input id="password" name="password " type="password " tabindex="2 " required="required " class="col-9 " placeholder="Default password is identical to your Employee No. "> -->
+
+                            <button class="show-password ">
+                                <svg xmlns="http://www.w3.org/2000/svg " viewBox="0 0 95 95 ">
+                                    <path d="M47.5,20.9C16.337,20.9,0,43.86,0,47.5c0,3.641,16.337,26.6,47.5,26.6 C78.661,74.1,95,51.141,95,47.5C95,43.86,78.661,20.9,47.5,20.9z M47.5,67.962c-11.659,0-21.112-9.161-21.112-20.462 S35.841,27.038,47.5,27.038S68.611,36.199,68.611,47.5S59.159,67.962,47.5,67.962z
+                        M58.055,47.5c0,5.65-4.727,10.232-10.555,10.232 c-5.83,0-10.555-4.582-10.555-10.232S41.67,37.269,47.5,37.269c3.15,0-1.933,8.108,0,10.231 C49.143,49.303,58.055,44.905,58.055,47.5z ">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <input name="next" type="hidden" value="{{ next }}"/>
+                        {% comment %} <div class="remember ">
+                            <input type="checkbox" name="remember ">remember me ?
+                        </div> {% endcomment %}
+                        <!-- <p>These credentials do not match our records.</p> -->
+
+
+                        {% if error == 'true' %}
+                        <p style="color:red; text-align:center;font-weight: bold"> These credentials do not match our records. </p>
+                        {%endif%}
+
+
+                        <div class="group ">
+                            <input class="button login-btn" type="submit" tabindex="3" value="Sign In">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container ">
+            <p class="footer-word ">Last Updated: {{current_time}} </p>
+            <p class="footer-word "> | </p>
+            <p class="footer-word ">Load Time:{{loading_time}}</p>
+            <p class="footer-word "> | </p>
+            <p class="footer-word ">Applied Materials Confidential </p>
+        </div>
+    </footer>
+    <!-- 支援IE舊瀏覽器 -->
+    <!-- <script src="scripts/jquery-1.8.2.min.js "></script>
+    <script src="scripts/modernizr-custom.js "></script>
+    <script src="scripts/webshim/polyfiller.js "></script>
+    <script>
+        $.webshims.polyfill('forms-ext');
+    </script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=" anonymous "></script>
+    <!-- <script src="http://152.135.51.8/js/bootstrap.min.js "></script> -->
+    <script type="text/javascript " src="{%static 'assets/js/bootstrap.min.js' %} "></script>
+
+    <script src="{% static '/assets/js/login.js' %} "></script>
+
+
+
+
+</body>
+
+</html>
