@@ -46,21 +46,25 @@ active
                                 <button class="mark delay_mark" type="button">逾</button>
                                 <button class="mark prepare_mark" type="button">包</button>
                             </td>
-                            <td>{{post.id}}</td>
-                            <td>{{post.PatientID.Name}}</td>
-                            <td>{{post.PatientID.cardID}}</td>
-                            <td>{{post.TakeMedDate}}</td>
-                            <td>
-                                <button class="dtFunBtn editBtn" type="button" onclick="gotoPost('{{post.id}}')">
+                            <td type="button" onclick="gotoPost('{{post.id}}')">{{post.id}}</td>
+                            <td type="button" onclick="gotoPost('{{post.id}}')">{{post.PatientID.Name}}</td>
+                            <td type="button" onclick="gotoPost('{{post.id}}')">{{post.PatientID.cardID}}</td>
+                            <td type="button" onclick="gotoPost('{{post.id}}')">{{post.TakeMedDate}}</td>
+                            <td class="tdFun">
+                                <button class="dtFunBtn delayBtn" type="button">
                                     <img class="editImg dtFunImg" id="" src="{% static '/assets/src/remind.png' %}"
-                                        alt="edit">
+                                        alt="delay">
+                                    <span class="hint">待處理</span>
+                                    <span class="delaySet"></span>
                                 </button>
+
                                 <button class="dtFunBtn delBtn" type="button">
                                     <img class="delImg dtFunImg " id="" src="{% static '/assets/src/delete.png' %}"
                                         alt="del">
+                                    <span class="hint">刪除</span>
                                 </button>
                             </td>
-                            <td>
+                            <td type="button" onclick="gotoPost('{{post.id}}')">
 
                             </td>
                         </tr>
@@ -85,6 +89,7 @@ active
 
             </div>
         </div>
+
     </div>
     <div class="width20" id="aside">
         <div class="asi_content">

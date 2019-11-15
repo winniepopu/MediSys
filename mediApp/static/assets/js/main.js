@@ -47,7 +47,15 @@ $(function () {
 
 
 });
+function delaySet() {
+    $(".delayBtn").click(function () { //use a class, since your ID gets mangled
+        if ($(this).hasClass("active") == false)
+            $(this).addClass("active"); //add the class to the clicked element
+        else
+            $(this).removeClass("active");
+    });
 
+}
 function changeColor() {
     $(".mark").click(function () { //use a class, since your ID gets mangled
         if ($(this).hasClass("active") == false)
@@ -213,7 +221,9 @@ $("body").delegate('.addIcon', "click", function (e) {
 
 
 // });
+function delay() {
 
+}
 function addPost(id) {
 
     var patientID = $("#patientID").text();
@@ -527,11 +537,11 @@ function gotoModePage() {
     // var nextpage_url = "/mode/" + cardID[0]
     // window.location.replace(nextpage_url)
 }
-function gotoIndex(index, target) {
+function index(index, target) {
     $(index).click(function () {
         $([document.documentElement, document.body]).animate({
-            scrollTop: $(target).offset().top
-        }, 2000);
+            scrollTop: $(target).offset().top - 70
+        }, 1000);
     });
 }
 function makeDataTable() {
@@ -576,12 +586,15 @@ $(document).ready(function () {
     autoComplete();
     makeDataTable();
     changeColor();
+    delaySet();
     var table = $('#myDatatable').DataTable();
+    var remind_index = "需要提醒 " + table.rows().count();
     document.getElementById("num_remind").innerHTML = table.rows().count();
-    gotoIndex("#process_index", "#process");
-    gotoIndex("#remind_index", "#need_remind");
-    gotoIndex("#recent_index", "#recent_taking");
-    gotoIndex("#prepare_index", "#prepare_drug");
+    document.getElementById("remind_index").innerHTML = remind_index;
+    index("#process_index", "#process");
+    index("#remind_index", "#need_remind");
+    index("#recent_index", "#recent_taking");
+    index("#prepare_index", "#prepare_drug");
 });
 
 $('#clientNameInput').keypress(function (e) {
