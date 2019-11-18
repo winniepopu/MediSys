@@ -48,26 +48,29 @@ $(function () {
 
 });
 function delaySet() {
-    $(".delayBtn").click(function () { //use a class, since your ID gets mangled
-        if ($(this).hasClass("active") == false)
-            $(this).addClass("active"); //add the class to the clicked element
-        else
-            $(this).removeClass("active");
-    });
-
+    if (document.getElementsByClassName("delayBtn")) {
+        $(".delayBtn").click(function () { //use a class, since your ID gets mangled
+            if ($(this).hasClass("active") == false)
+                $(this).addClass("active"); //add the class to the clicked element
+            else
+                $(this).removeClass("active");
+        });
+    }
 }
-function btnActive(Buttn, target) {
-    $(Buttn).click(function () { //use a class, since your ID gets mangled
-        if ($(this).hasClass("active") == false) {
-            $(this).addClass("active"); //add the class to the clicked element
-            $(target).addClass("active");
-        }
+function btnActive(button, target) {
+    if ($(button).length) {
+        $(button).click(function () { //use a class, since your ID gets mangled
+            if ($(this).hasClass("active") == false) {
+                $(this).addClass("active"); //add the class to the clicked element
+                $(target).addClass("active");
+            }
 
-        else {
-            $(this).removeClass("active");
-            $(target).removeClass("active");
-        }
-    });
+            else {
+                $(this).removeClass("active");
+                $(target).removeClass("active");
+            }
+        });
+    }
 }
 function changeColor() {
     $(".mark").click(function () { //use a class, since your ID gets mangled
@@ -567,12 +570,23 @@ function gotoModePage() {
     // window.location.replace(nextpage_url)
 }
 function index(index, target) {
-    $(index).click(function () {
-        $([document.documentElement, document.body]).animate({
-            scrollTop: $(target).offset().top - 70
-        }, 1000);
-    });
+    if ($(index).length) {
+        $(index).click(function () {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(target).offset().top - 70
+            }, 1000);
+        });
+    }
 }
+function numofRowofTable(tableId, titleId, indexId, indexVar) {
+    if ($(titleId).length) {
+        var table = $(tableId).DataTable();
+        var remind_index = indexVar + table.rows().count();
+        $(titleId).html(table.rows().count());
+        $(indexId).html(remind_index);
+    }
+}
+
 function makeDataTable() {
     $("#myDatatable").DataTable({
         searching: true, //關閉filter功能
@@ -616,17 +630,14 @@ $(document).ready(function () {
     makeDataTable();
     changeColor();
     delaySet();
-    var table = $('#myDatatable').DataTable();
-    var remind_index = "需要提醒 " + table.rows().count();
-    cal();
+
     index("#process_index", "#process");
     index("#remind_index", "#need_remind");
     index("#recent_index", "#recent_taking");
     index("#prepare_index", "#prepare_drug");
     btnActive("#menuBtn", "#l_col");
     btnActive("#toolBoxBtn", "#toolBoxMenu");
-    document.getElementById("num_remind").innerHTML = table.rows().count();
-    document.getElementById("remind_index").innerHTML = remind_index;
+    numofRowofTable('#myDatatable', "#num_remind", "#remind_index", "需要提醒 ");
 });
 
 $('#clientNameInput').keypress(function (e) {
