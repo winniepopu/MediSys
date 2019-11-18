@@ -8,10 +8,12 @@ input {
 }
 
 #box_img {
-    width: 30px;
-    margin: 0 20px;
+    width: 20px;
 }
+#menuImg {
+    width: 20px;
 
+}
 #logo_img {
     width: 60px;
     margin-left: 15px;
@@ -280,6 +282,10 @@ a{
 .dtFunBtn {
     background-color: rgba(240, 240, 240, 0);
     border: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0;
 }
 
 .newUserSec {
@@ -372,11 +378,22 @@ a.ui-button:active,
     box-shadow: 0px 1px 0px rgb(226, 225, 225);
 }
 
-.dtFunImg:hover,
 .dpShadow:hover {
     cursor: pointer;
-    -webkit-filter: drop-shadow(0px 0px 7px rgb(0, 0, 0));
-    filter: drop-shadow(0px 0px 7px rgb(0, 0, 0));
+    -webkit-filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
+    filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
+}
+#menuBtn{
+    width:40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 16px;
+}
+#toolBoxBtn{
+    width:40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 16px;
 }
 
 .bxShadow:hover {
@@ -547,7 +564,8 @@ a.ui-button:active,
 
   /* Position the tooltip */
   position: absolute;
-  left:-15px;
+  left:-16px;
+  top: 30px;
   z-index: 1;
 }
 .dtFunBtn:hover .hint{
@@ -566,8 +584,42 @@ a.ui-button:active,
   /* Position the tooltip */
   position: absolute;
   left:-80px;
+  top:30px;
   z-index: 1;
 }
 .delayBtn.active .delaySet{
     visibility: visible;
+}
+#toolBoxMenu{
+    visibility: hidden;
+  width: 130px;
+  height: 150px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 2.5px rgba(71, 71, 71, 0.377);
+  color: rgb(0, 0, 0);
+  border-radius: 3px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: fixed;
+  right:15px;
+  z-index: 1;
+}
+#toolBoxMenu.active{
+    visibility: visible;
+}
+.toolBoxOption{
+    width: 120px;
+    padding: 5px;
+}
+#l_col{
+    display:inline;
+}
+#l_col.active{
+    display:none;
+}
+.optionICon{
+    width: 15px;
+    height: 15px;
+    margin: 0 15px;
 }

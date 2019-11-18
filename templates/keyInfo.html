@@ -51,14 +51,16 @@ active
                             <td type="button" onclick="gotoPost('{{post.id}}')">{{post.PatientID.cardID}}</td>
                             <td type="button" onclick="gotoPost('{{post.id}}')">{{post.TakeMedDate}}</td>
                             <td class="tdFun">
-                                <button class="dtFunBtn delayBtn" type="button">
+                                <button class="dtFunBtn bgGray delayBtn hcenter" type="button">
                                     <img class="editImg dtFunImg" id="" src="{% static '/assets/src/remind.png' %}"
                                         alt="delay">
                                     <span class="hint">待處理</span>
-                                    <span class="delaySet"></span>
+                                    <!-- <span class="delaySet"> -->
+
+                                    </span>
                                 </button>
 
-                                <button class="dtFunBtn delBtn" type="button">
+                                <button class="dtFunBtn bgGray delBtn hcenter" type="button">
                                     <img class="delImg dtFunImg " id="" src="{% static '/assets/src/delete.png' %}"
                                         alt="del">
                                     <span class="hint">刪除</span>

@@ -56,6 +56,19 @@ function delaySet() {
     });
 
 }
+function btnActive(Buttn, target) {
+    $(Buttn).click(function () { //use a class, since your ID gets mangled
+        if ($(this).hasClass("active") == false) {
+            $(this).addClass("active"); //add the class to the clicked element
+            $(target).addClass("active");
+        }
+
+        else {
+            $(this).removeClass("active");
+            $(target).removeClass("active");
+        }
+    });
+}
 function changeColor() {
     $(".mark").click(function () { //use a class, since your ID gets mangled
         if ($(this).hasClass("active") == false)
@@ -273,6 +286,22 @@ function addPost(id) {
         }
     });
 
+}
+function GetDays() {
+    var date2 = new Date(document.getElementById("date2").value);
+    var date = new Date(document.getElementById("date").value);
+    return parseInt((date2 - date) / (24 * 3600 * 1000));
+}
+
+function autoNumofDay() {
+    if (document.getElementById("day")) {
+        document.getElementById("day").value = GetDays();
+    }
+}
+function autoDate() {
+    if (document.getElementById("day")) {
+
+    }
 }
 
 function addUser(id) {
@@ -589,12 +618,15 @@ $(document).ready(function () {
     delaySet();
     var table = $('#myDatatable').DataTable();
     var remind_index = "需要提醒 " + table.rows().count();
-    document.getElementById("num_remind").innerHTML = table.rows().count();
-    document.getElementById("remind_index").innerHTML = remind_index;
+    cal();
     index("#process_index", "#process");
     index("#remind_index", "#need_remind");
     index("#recent_index", "#recent_taking");
     index("#prepare_index", "#prepare_drug");
+    btnActive("#menuBtn", "#l_col");
+    btnActive("#toolBoxBtn", "#toolBoxMenu");
+    document.getElementById("num_remind").innerHTML = table.rows().count();
+    document.getElementById("remind_index").innerHTML = remind_index;
 });
 
 $('#clientNameInput').keypress(function (e) {
@@ -607,6 +639,7 @@ if (document.getElementById('date') != null) {
 }
 
 if (document.getElementById('date2') != null) {
+
     var dateTime = new Date();
     dateTime = dateTime.setDate(dateTime.getDate() + 28);
     dateTime = new Date(dateTime);
